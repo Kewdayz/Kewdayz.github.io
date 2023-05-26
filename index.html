@@ -232,15 +232,6 @@ Last updated: [25/05/2023]
 </html>
 
 <script>
-// Attachment options based on selected excavator
-var attachmentOptions = {
-  excavator1: ["no-attachment", "hammer"],
-  excavator2: ["no-attachment", "hammer", "auger", "tilt-bucket", "grapple", "hydraulic-compaction-plate"],
-  excavator3: ["no-attachment", "hammer", "auger", "hard-roll-drill", "grapple", "hydraulic-compaction-plate"],
-  excavator4: ["no-attachment", "hammer", "grapple", "ripper", "hydraulic-compaction-plate", "escort"],
-  excavator5: ["no-attachment", "broom", "asphalt-profiler", "forks"],
-};
-
 // Attachment rates (per hour)
 var attachmentRates = {
   hammer: {
@@ -284,17 +275,11 @@ var attachmentRates = {
     excavator5: 10,
   },
   escort: {
-    excavator4: 220,
+    excavator4: {
+      firstHour: 220,
+      additionalHour: 0,
+    },
   },
-};
-
-// Float charge options for each excavator
-var floatChargeOptions = {
-  excavator1: 250,
-  excavator2: 400,
-  excavator3: 750,
-  excavator4: 890,
-  excavator5: 250,
 };
 
 // JavaScript code for cost calculation
@@ -339,7 +324,18 @@ document.querySelector("form").addEventListener("submit", function (e) {
   });
 
   // Calculate total cost
-  var totalCost = (baseCostPerHour + attachmentCost) * duration;
+  var totalCost = 0;
+  if (attachments.includes("escort")) {
+    var escortRate = attachmentRates["escort"][excavator];
+    var firstHourCost = escortRate.firstHour;
+    var additionalHourCost = escortRate.additionalHour;
+    if (duration > 0) {
+      totalCost += firstHourCost; // Charge for the first hour
+      totalCost += additionalHourCost * Math.max(duration - 1, 0); // Charge $0 for additional hours
+    }
+  } else {
+    totalCost = (baseCostPerHour + attachmentCost) * duration;
+  }
 
   // Add float charge if selected
   if (includeFloatCharge) {
@@ -352,31 +348,8 @@ document.querySelector("form").addEventListener("submit", function (e) {
     totalCost += 30;
   }
 
-  // If the "escort" attachment is selected, charge only once
-  if (attachments.includes("escort")) {
-    totalCost -= attachmentRates["escort"][excavator] || 0;
-  }
-
   // Display the result
   document.getElementById("cost-result").innerHTML =
     "Estimated Cost: $" + totalCost.toFixed(2) + "<br>Attachments: " + attachments.join(", ");
-});
-
-// Update attachment options when excavator is selected
-document.getElementById("excavator").addEventListener("change", function () {
-  var excavator = this.value;
-  var attachmentsSelect = document.getElementById("attachments");
-  var attachments = attachmentOptions.hasOwnProperty(excavator) ? attachmentOptions[excavator] : [];
-
-  // Clear previous attachment options
-  attachmentsSelect.innerHTML = "";
-
-  // Create option elements for each attachment
-  attachments.forEach(function (attachment) {
-    var option = document.createElement("option");
-    option.value = attachment;
-    option.text = attachment.charAt(0).toUpperCase() + attachment.slice(1);
-    attachmentsSelect.appendChild(option);
-  });
 });
 </script>
