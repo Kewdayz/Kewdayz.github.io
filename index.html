@@ -352,6 +352,11 @@ document.querySelector("form").addEventListener("submit", function (e) {
     totalCost += 30;
   }
 
+  // If the "escort" attachment is selected, charge only once
+  if (attachments.includes("escort")) {
+    totalCost -= attachmentRates["escort"][excavator] || 0;
+  }
+
   // Display the result
   document.getElementById("cost-result").innerHTML =
     "Estimated Cost: $" + totalCost.toFixed(2) + "<br>Attachments: " + attachments.join(", ");
