@@ -237,8 +237,9 @@ Last updated: [25/05/2023]
     excavator1: ["no-attachment", "hammer"],
     excavator2: ["no-attachment", "hammer", "auger", "tilt-bucket", "grapple", "hydraulic-compaction-plate"],
     excavator3: ["no-attachment", "hammer", "auger", "hard-roll-drill", "grapple", "hydraulic-compaction-plate"],
-    excavator4: ["no-attachment", "hammer", "grapple", "ripper", "hydraulic-compaction-plate"],
+    excavator4: ["no-attachment", "hammer", "grapple", "ripper", "hydraulic-compaction-plate","escort"],
     excavator5: ["no-attachment", "broom", "asphalt-profiler", "forks"],
+	escort: ["escort"]
   };
 
   // Attachment rates (per hour)
@@ -282,6 +283,9 @@ Last updated: [25/05/2023]
     },
     forks: {
       excavator5: 10,
+    },
+	escort: {
+      excavator4: 220,
     },
   };
   // Float charge options for each excavator
