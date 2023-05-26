@@ -277,7 +277,7 @@ var attachmentRates = {
   escort: {
     excavator4: {
       firstHour: 220,
-      additionalHour: 0,
+      additionalHour: 150,
     },
   },
 };
@@ -331,7 +331,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
     var additionalHourCost = escortRate.additionalHour;
     if (duration > 0) {
       totalCost += firstHourCost; // Charge for the first hour
-      totalCost += additionalHourCost * Math.max(duration - 1, 0); // Charge $0 for additional hours
+      totalCost += additionalHourCost * (duration - 1); // Charge reduced rate for additional hours
     }
   } else {
     totalCost = (baseCostPerHour + attachmentCost) * duration;
