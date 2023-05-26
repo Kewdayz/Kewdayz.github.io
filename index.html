@@ -1,294 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
+// Attachment options based on selected excavator
+var attachmentOptions = {
+  excavator1: ["no-attachment", "hammer"],
+  excavator2: ["no-attachment", "hammer", "auger", "tilt-bucket", "grapple", "hydraulic-compaction-plate"],
+  excavator3: ["no-attachment", "hammer", "auger", "hard-roll-drill", "grapple", "hydraulic-compaction-plate"],
+  excavator4: ["no-attachment", "hammer", "grapple", "ripper", "hydraulic-compaction-plate", "escort"],
+  excavator5: ["no-attachment", "broom", "asphalt-profiler", "forks"],
+};
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Construction Hire Company</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
+// Attachment rates (per hour)
+var attachmentRates = {
+  hammer: {
+    excavator1: 30,
+    excavator2: 40,
+    excavator3: 50,
+    excavator4: 60,
+  },
+  auger: {
+    excavator2: 40,
+    excavator3: 60,
+  },
+  "tilt-bucket": {
+    excavator2: 15,
+  },
+  grapple: {
+    excavator2: 15,
+    excavator3: 20,
+    excavator4: 25,
+  },
+  "hydraulic-compaction-plate": {
+    excavator2: 40,
+    excavator3: 50,
+    excavator4: 60,
+  },
+  "hard-roll-drill": {
+    excavator3: 50,
+  },
+  broom: {
+    excavator5: 50,
+  },
+  ripper: {
+    excavator2: 15,
+    excavator3: 20,
+    excavator4: 25,
+  },
+  "asphalt-profiler": {
+    excavator5: 80,
+  },
+  forks: {
+    excavator5: 10,
+  },
+  escort: {
+    excavator4: 220,
+  },
+};
 
-<body>
-  <!-- Navigation bar -->
-  <header>
-    <nav>
-      <div class="container">
-        <h1 class="logo">JDB CIVIL PTY LTD</h1>
-        <ul class="nav-links">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Hero section -->
-  <section class="hero">
-    <div class="container">
-      <img src="banner-image.jpg" alt="Banner Image">
-      <h2>Quality Construction Equipment for Hire</h2>
-      <p>Get access to a wide range of construction equipment and machinery for your projects.</p>
-<a href="#contact" class="btn">Get a Quote</a>
-      
-    </div>
-  </section>
-
-  <!-- Services section -->
-  <section id="services">
-    <div class="container">
-      <h2>Our Services</h2>
-      <div class="service">
-       <p>We provide top-quality excavators for any type of excavation work, located in Sylvania NSW 2224</p>
-      </div>
-     
-      <!-- Add more service sections as needed -->
-    </div>
-  </section>
-
-  <!-- About section -->
-  <section id="about">
-    <div class="container">
-      <h2>About Us</h2>
-      <p>Welcome to JDB, your trusted partner in construction equipment hire. We are a leading construction equipment rental company dedicated to providing high-quality, reliable, and efficient solutions for all your construction needs. With our extensive range of equipment and exceptional customer service, we strive to be your go-to choice for construction equipment hire.
-
-At JDB, we understand the importance of having the right tools and equipment to complete your construction projects on time and within budget. Whether you are a professional contractor, a construction company, or a do-it-yourself enthusiast, we have the perfect equipment to meet your requirements.
-
-Our comprehensive fleet of construction equipment is meticulously maintained and regularly serviced to ensure optimal performance and safety. From excavators and loaders, we offer a wide selection of equipment from top brands, guaranteeing efficiency and durability on every job site.
-
-What sets us apart is our commitment to customer satisfaction. Our team of knowledgeable and experienced professionals is dedicated to understanding your unique needs and providing tailored solutions that exceed your expectations. We take pride in our personalized approach, offering expert advice and guidance to help you choose the right equipment for your project.
-
-We understand that time is of the essence in the construction industry. That's why we offer flexible rental periods to accommodate your specific timelines, whether it's a short-term project or a long-term assignment. Our seamless rental process ensures quick and hassle-free transactions, allowing you to focus on what matters most - getting the job done.
-
-Safety is a core value at JBD. We adhere to the highest safety standards to protect both our customers and our team members. All our equipment undergoes rigorous inspections and maintenance to ensure it meets or exceeds industry regulations.
-
-We are proud to serve a wide range of industries, including commercial construction, residential projects, infrastructure development, and more. Our commitment to excellence has earned us a reputation for delivering outstanding service and reliable equipment, making us the preferred choice for construction equipment hire in the region.
-
-Whether you need a single piece of equipment or a complete fleet, trust JBD to deliver the solutions you need. Contact us today to discuss your project requirements, and let us provide you with the right tools to build your success.</p>
-    </div>
-  </section>
-
-  <!-- Photos section -->
-  <section id="photos">
-    <div class="container">
-      <h2>Our Machines</h2>
-      <div class="photo-gallery">
-        <div class="photo-item">
-          <img src="photo1.jpg" alt="Photo 1">
-        </div>
-        <div class="photo-item">
-          <img src="photo2.jpg" alt="Photo 2">
-        </div>
-        <div class="photo-item">
-          <img src="photo3.jpg" alt="Photo 3">
-        </div>
-	                                  
-	      
-	      
-	      <div class="photo-item">
-          <img src="photo4.jpg" alt="Photo 4">
-        </div>
-	  <div class="photo-item">
-          <img src="photo5.JPG" alt="Photo 5">
-        </div>  
-	      <div class="photo-item">
-          <img src="photo6.jpg" alt="Photo 6">
-        </div>
-	<!-- phot 5 is missing-->   
-	<div class="photo-item">
-          <img src="photo7.JPG" alt="Photo 7">
-        </div>      
-	      
-	      
-	      
-	      
-      </div>
-    </div>
-  </section>
-
-<section id="cost-calculator">
-    <div class="container">
-      <h2>Cost Calculator</h2>
-      <p>Calculate the estimated cost for renting an excavator and operator:</p>
-      <form>
-        <div class="form-group">
-	                                         
-          <label for="excavator">Excavator Type:</label>
-          <select id="excavator" required>
-		<option value="" selected disabled>Select Excavator</option>
-             <option value="excavator1">1-2 Tonne Excavator (wet hire)</option>
-            <option value="excavator2">5-6 Tonne Excavator (wet hire)</option>
-            <option value="excavator3">12-14 Tonne Excavator (wet hire)</option>
-            <option value="excavator4">20-22.5 Tonne Excavator (wet hire)</option>
-            <option value="excavator5">Skid Steer Hire (wet hire)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="difficulty">Difficulty Level:</label>
-          <select id="difficulty" required>
-            <option value="" selected disabled>Select Difficulty Level</option>
-            <option value="easy">Easy</option>
-            <option value="moderate">Moderate</option>
-            <option value="difficult">Difficult</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="duration">Duration (in hours):</label>
-          <input type="number" id="duration" min="1" required>
-        </div>
-       <div class="form-group">
-  <label for="attachments">Attachments: (hold Ctrl to select multiple attachments)</label>
-  <select id="attachments" multiple required>
-    <option value="" selected disabled>Select Attachments</option>
-  </select>
-</div>
-
-
-	<div>
-  <label for="include-float-charge">Include Float Charge:</label>
-  <input type="checkbox" id="include-float-charge">
-</div>
-
-        <div class="form-group">
-          <label for="night-work">Night Work:</label>
-          <input type="checkbox" id="night-work">
-        </div>
-	<button type="submit" class="btn">Calculate Cost</button>
-	</form>
-      <div id="cost-result"></div>
-<p><font size="-3">Terms of Service (TOS) for the Use of Calculator
-
-These terms of service ("TOS") govern your use of the cost calculator ("Calculator") provided by our website or application. By using the Calculator, you agree to abide by these terms. If you do not agree with these terms, please refrain from using the Calculator.
-
-    Accuracy of Information:
-        The Calculator provides estimates based on the entered data and predefined rates. While we strive to ensure the accuracy of the calculations, the results should be considered as approximations and may not reflect the exact cost.
-
-    Personal and Non-Commercial Use:
-        The Calculator is intended for personal, non-commercial use. You may use it to calculate the cost of renting excavators and operators for construction purposes. Any other use, including commercial use, is strictly prohibited without our prior written consent.
-
-    No Warranty:
-        We provide the Calculator on an "as is" basis without any warranty or guarantee. We do not warrant the accuracy, reliability, or availability of the Calculator or its results. We disclaim all warranties, whether express or implied, including but not limited to merchantability, fitness for a particular purpose, and non-infringement.
-
-    Limitation of Liability:
-        In no event shall we be liable for any direct, indirect, incidental, consequential, special, or exemplary damages arising out of or in connection with the use of the Calculator, even if we have been advised of the possibility of such damages. Your use of the Calculator is at your own risk.
-
-    Intellectual Property:
-        The Calculator, including its design, code, and content, is protected by intellectual property laws and is owned by us or our licensors. You shall not copy, modify, distribute, or reproduce the Calculator or any part thereof without our prior written permission.
-
-    Changes to the Calculator and TOS:
-        We reserve the right to modify, suspend, or discontinue the Calculator at any time without prior notice. We may also revise these TOS from time to time. It is your responsibility to review the TOS periodically for any changes. Your continued use of the Calculator after the TOS have been modified signifies your acceptance of the updated terms.
-
-Last updated: [25/05/2023]
-
-</font></p>
-        
-      </form>
-      <div id="cost-result"></div>
-    </div>
-  </section>
-
-
-
-
-  <!-- Contact section -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <p>Get in touch with us for inquiries or to request a quote.</p>
-      <form>
-        <input type="text" placeholder="Your Name">
-        <input type="email" placeholder="Your Email">
-        <textarea placeholder="Message"></textarea>
-        <button type="submit" class="btn">Send</button>
-      </form>
-    </div>
-  </section>
-
-<!-- Registration section -->
-<section id="registration">
-  <div class="container">
-    <h2>Business Registration</h2>
-    <p>Register your business by providing the following details:</p>
-    <form>
-      <input type="text" placeholder="Email" required>
-      <input type="text" placeholder="ABN" required>
-      <input type="text" placeholder="Phone Number" required>
-      <textarea placeholder="Additional Comments"></textarea>
-      <button type="submit" class="btn">Register</button>
-    </form>
-  </div>
-</section>
-
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2023 JBD Construction Hire Company. All rights reserved.</p>
-    </div>
-  </footer>
-
-</body>
-
-</html>
-
-<script>
-  // Attachment options based on selected excavator
-  var attachmentOptions = {
-    excavator1: ["no-attachment", "hammer"],
-    excavator2: ["no-attachment", "hammer", "auger", "tilt-bucket", "grapple", "hydraulic-compaction-plate"],
-    excavator3: ["no-attachment", "hammer", "auger", "hard-roll-drill", "grapple", "hydraulic-compaction-plate"],
-    excavator4: ["no-attachment", "hammer", "grapple", "ripper", "hydraulic-compaction-plate","escort"],
-    excavator5: ["no-attachment", "broom", "asphalt-profiler", "forks"],
-	escort: ["no-attachment", "escort"],
-  };
-
-  // Attachment rates (per hour)
-  var attachmentRates = {
-    hammer: {
-      excavator1: 30,
-      excavator2: 40,
-      excavator3: 50,
-      excavator4: 60,
-    },
-    auger: {
-      excavator2: 40,
-      excavator3: 60,
-    },
-    "tilt-bucket": {
-      excavator2: 15,
-    },
-    grapple: {
-      excavator2: 15,
-      excavator3: 20,
-      excavator4: 25,
-    },
-    "hydraulic-compaction-plate": {
-      excavator2: 40,
-      excavator3: 50,
-      excavator4: 60,
-    },
-    "hard-roll-drill": {
-      excavator3: 50,
-    },
-    broom: {
-      excavator5: 50,
-    },
-	ripper: {
-	excavator2: 15,
-	excavator3: 20,
-        excavator4: 25,
-    },  
-    "asphalt-profiler": {
-      excavator5: 80,
-    },
-    forks: {
-      excavator5: 10,
-    },
-	"escort": {
-      excavator4: 220,
-    },
-  };
-  // Float charge options for each excavator
+// Float charge options for each excavator
 var floatChargeOptions = {
   excavator1: 250,
   excavator2: 400,
@@ -297,81 +63,80 @@ var floatChargeOptions = {
   excavator5: 250,
 };
 
-  // JavaScript code for cost calculation
-  document.querySelector("form").addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent form submission
+// JavaScript code for cost calculation
+document.querySelector("form").addEventListener("submit", function (e) {
+  e.preventDefault(); // Prevent form submission
 
-    // Get input values
-    var excavator = document.getElementById("excavator").value;
-    var difficulty = document.getElementById("difficulty").value;
-    var duration = document.getElementById("duration").value;
-    var attachments = Array.from(document.getElementById("attachments").selectedOptions).map(function (option) {
-      return option.value;
-    });
-    var isNightWork = document.getElementById("night-work").checked;
-    var includeFloatCharge = document.getElementById("include-float-charge").checked;
+  // Get input values
+  var excavator = document.getElementById("excavator").value;
+  var difficulty = document.getElementById("difficulty").value;
+  var duration = document.getElementById("duration").value;
+  var attachments = Array.from(document.getElementById("attachments").selectedOptions).map(function (option) {
+    return option.value;
+  });
+  var isNightWork = document.getElementById("night-work").checked;
+  var includeFloatCharge = document.getElementById("include-float-charge").checked;
 
-    // Excavator rates based on size
-    var excavatorRates = {
-      excavator1: 90,
-      excavator2: 100,
-      excavator3: 140,
-      excavator4: 160,
-      excavator5: 110,
-    };
+  // Excavator rates based on size
+  var excavatorRates = {
+    excavator1: 90,
+    excavator2: 100,
+    excavator3: 140,
+    excavator4: 160,
+    excavator5: 110,
+  };
 
-    // Difficulty level multipliers
-    var difficultyMultipliers = {
-      easy: 1,
-      moderate: 1.2,
-      difficult: 1.5,
-    };
+  // Difficulty level multipliers
+  var difficultyMultipliers = {
+    easy: 1,
+    moderate: 1.2,
+    difficult: 1.5,
+  };
 
-    // Calculate base cost per hour
-    var baseCostPerHour = excavatorRates[excavator] * difficultyMultipliers[difficulty];
+  // Calculate base cost per hour
+  var baseCostPerHour = excavatorRates[excavator] * difficultyMultipliers[difficulty];
 
-    // Calculate attachment cost
-    var attachmentCost = 0;
-    attachments.forEach(function (attachment) {
-      if (attachment !== "no-attachment") {
-        attachmentCost += attachmentRates[attachment][excavator] || 0;
-      }
-    });
-
-    // Calculate total cost
-    var totalCost = (baseCostPerHour + attachmentCost) * duration;
-
-    // Add float charge if selected
-    if (includeFloatCharge) {
-      var floatCharge = floatChargeOptions[excavator] || 0;
-      totalCost += floatCharge;
+  // Calculate attachment cost
+  var attachmentCost = 0;
+  attachments.forEach(function (attachment) {
+    if (attachment !== "no-attachment") {
+      attachmentCost += attachmentRates[attachment][excavator] || 0;
     }
-
-    // Adjust total cost for night work
-    if (isNightWork) {
-      totalCost += 30 * duration;
-    }
-
-    // Display the result
-    document.getElementById("cost-result").innerHTML =
-      "Estimated Cost: $" + totalCost.toFixed(2) + "<br>Attachments: " + attachments.join(", ");
   });
 
-  // Update attachment options when excavator is selected
-  document.getElementById("excavator").addEventListener("change", function () {
-    var excavator = this.value;
-    var attachmentsSelect = document.getElementById("attachments");
-    var attachments = attachmentOptions.hasOwnProperty(excavator) ? attachmentOptions[excavator] : [];
+  // Calculate total cost
+  var totalCost = (baseCostPerHour + attachmentCost) * duration;
 
-    // Clear previous attachment options
-    attachmentsSelect.innerHTML = "";
+  // Add float charge if selected
+  if (includeFloatCharge) {
+    var floatCharge = floatChargeOptions[excavator] || 0;
+    totalCost += floatCharge;
+  }
 
-    // Create option elements for each attachment
-    attachments.forEach(function (attachment) {
-      var option = document.createElement("option");
-      option.value = attachment;
-      option.text = attachment.charAt(0).toUpperCase() + attachment.slice(1);
-      attachmentsSelect.appendChild(option);
-    });
+  // Adjust total cost for night work
+  if (isNightWork) {
+    totalCost += 30;
+  }
+
+  // Display the result
+  document.getElementById("cost-result").innerHTML =
+    "Estimated Cost: $" + totalCost.toFixed(2) + "<br>Attachments: " + attachments.join(", ");
+});
+
+// Update attachment options when excavator is selected
+document.getElementById("excavator").addEventListener("change", function () {
+  var excavator = this.value;
+  var attachmentsSelect = document.getElementById("attachments");
+  var attachments = attachmentOptions.hasOwnProperty(excavator) ? attachmentOptions[excavator] : [];
+
+  // Clear previous attachment options
+  attachmentsSelect.innerHTML = "";
+
+  // Create option elements for each attachment
+  attachments.forEach(function (attachment) {
+    var option = document.createElement("option");
+    option.value = attachment;
+    option.text = attachment.charAt(0).toUpperCase() + attachment.slice(1);
+    attachmentsSelect.appendChild(option);
   });
-</script>
+});
