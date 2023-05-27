@@ -40,6 +40,19 @@ nav {
   color: #fff;
   text-decoration: none;
 }
+<!-- Hero section -->
+<section class="hero">
+  <div class="container">
+    <img src="banner-image.jpg" alt="Banner Image">
+    <h2>Quality Construction Equipment for Hire</h2>
+    <p>Get access to a wide range of construction equipment and machinery for your projects.</p>
+    <a href="#contact" class="btn">Get a Quote</a>
+  </div>
+</section>
+
+    CSS:
+
+css
 
 /* CSS styles for the photo gallery */
 .photo-gallery {
@@ -62,12 +75,9 @@ nav {
 
 /* Hero section styles */
 .hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f1f1f1;
+  position: relative;
   text-align: center;
+  padding: 100px 0;
   color: #fff;
 }
 
