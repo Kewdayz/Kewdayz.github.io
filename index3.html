@@ -173,13 +173,13 @@
         </div>
 	    <div class="form-group">
         <label for="tipper">Tipper Type:</label>
-        <select id="tipper" required>
-          <option value="" selected disabled>Select Tipper</option>
-          <option value="20">20 Tonne Tipper</option>
-          <option value="30">30 Tonne Tipper</option>
-          <option value="40">40 Tonne Tipper</option>
-          <option value="50">50 Tonne Tipper</option>
-          <option value="60">60 Tonne Tipper</option>
+        <select id="tipper">
+           <option value="" selected disabled>Select Tipper (optional)</option>
+          <option value="t1">20 Tonne Tipper</option>
+          <option value="t2">30 Tonne Tipper</option>
+          <option value="t3">40 Tonne Tipper</option>
+          <option value="t4">50 Tonne Tipper</option>
+          <option value="t5">60 Tonne Tipper</option>
         </select>
       </div>  
 	      
@@ -382,11 +382,11 @@
 	  
 	// Tippers rates based on size
 var tipperRates = {
-  "20": 80,
-  "30": 100,
-  "40": 120,
-  "50": 140,
-  "60": 160,
+  "t1": 80,
+  "t2": 100,
+  "t3": 120,
+  "t4": 140,
+  "t5": 160,
 };  
 
     // Difficulty level multipliers
