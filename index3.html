@@ -399,7 +399,7 @@ var tipperRates = {
     };
 
     // Calculate base cost per hour
-    var baseCostPerHour = excavatorRates[excavator] * difficultyMultipliers[difficulty];
+    var baseCostPerHour = excavatorRates[excavator] * difficultyMultipliers[difficulty] + tipperRates[tipper];
 
     // Calculate attachment cost
     var attachmentCost = 0;
