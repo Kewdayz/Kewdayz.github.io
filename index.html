@@ -29,19 +29,29 @@
     <div class="container">
       <img src="banner-image.jpg" alt="Banner Image">
       <h2>Quality Construction Equipment for Hire</h2>
-      <p>Get access to a wide range of construction equipment and machinery for your projects.</p>
+      <p>Get access to a wide range of construction machinery, equipment and labor hire for your projects.</p>
+	  
       <a href="#contact" class="btn">Get a Quote</a>
     </div>
   </section>
 
   <!-- Services section -->
-  <section id="services">
+<section id="services">
     <div class="container">
       <h2>Our Services</h2>
       <div class="service">
-        <p>We provide top-quality excavators for any type of excavation work, located in Sylvania NSW 2224</p>
+        <p>We provide top-quality excavators for any type of excavation work, tippers and labor hire, located in Sylvania NSW 2224. Please use our cost calculator for pricing on Machinery/Equipment.</p> 
+	      <a href="#cost-calculator" class="btn">Cost Calculator</a>
       </div>
 
+
+	    
+	    
+	    
+	    
+	    
+	    
+	    
       <!-- Add more service sections as needed -->
       <style type="text/css">
 	table.tableizer-table {
@@ -98,8 +108,15 @@
  <tr><td>SITE ENGINEER</td><td>$137.50</td><td>$181.50</td><td>$160</td></tr>
  <tr><td>PROJECT ENGINEER</td><td>$165</td><td>$209</td><td>$185</td></tr>
 </tbody></table>
+	    <p><font size="-3">All the above rates exclude GST. Rates are subject to change without notice. Tipping SOR and Ex-Bin SOR exclude haulage, hourly hire rates will apply. Combination rates calculated i.e.: first plant at full rate and second plant at half rate (one operator), 
+		    Any other rates TBA as requested.We can accommodate with any other materials, plant and equipment that has not been listed above. Please contact by email for any rates or recourses required.Disposal dockets will be provided, 
+		    all waste materials will be disposed to a licenced facility that excepts the waste. </font> </p>
+	    
       
     </div>
+	  <div style="text-align:center">
+		  <p><font size="-2">Please use cost calculator for excavator and tipper charges.</font></p>
+	  </div>
   </section>
 
   <!-- About section -->
@@ -158,12 +175,13 @@
   <section id="cost-calculator">
     <div class="container">
       <h2>Cost Calculator</h2>
-      <p>Calculate the estimated cost for renting an excavator and operator:</p>
+      <p>Calculate the estimated cost for renting an excavator & operator / Tipper (Rate (standard time 0600-1800 M-F) min. 4hrs hire / Rate (night works & Saturday) min. 8hrs hire):</p>
       <form>
         <div class="form-group">
           <label for="excavator">Excavator Type:</label>
           <select id="excavator" required>
             <option value="" selected disabled>Select Excavator</option>
+		  <option value="none">Not Required</option>
             <option value="excavator1">1-2 Tonne Excavator (wet hire)</option>
             <option value="excavator2">5-6 Tonne Excavator (wet hire)</option>
             <option value="excavator3">12-14 Tonne Excavator (wet hire)</option>
@@ -171,6 +189,19 @@
             <option value="excavator5">Skid Steer Hire (wet hire)</option>
           </select>
         </div>
+	    <div class="form-group">
+        <label for="tipper">Tipper Type:</label>
+        <select id="tipper" required>
+           <option value="" selected disabled>Select Tipper (optional)</option>
+		<option value="none">Not Required</option>
+          <option value="t1">3 Tonne Tipper (wet hire) plus 1 hour travel (Single Axle)</option>
+          <option value="t2">12 Tonne Tipper (wet hire) plus 1 hour travel (6 Wheeler)</option>
+          <option value="t3">18 Tonne Tipper (wet hire) plus 1 hour travel (10 Wheeler)</option>
+          <option value="t4">32 Tonne Tipper (wet hire) plus 1 hour travel (Truck & Dog)</option>
+          <option value="t5">3000L Water Cart Hire  (wet hire) plus 1 hour travel</option>
+        </select>
+      </div>  
+	      
         <div class="form-group">
           <label for="difficulty">Difficulty Level:</label>
           <select id="difficulty" required>
@@ -283,6 +314,7 @@
 <script>
   // Attachment options based on selected excavator
   var attachmentOptions = {
+	 "none":["no-attachment"],
     excavator1: ["no-attachment", "hammer"],
     excavator2: ["no-attachment", "hammer", "auger", "tilt-bucket", "grapple", "hydraulic-compaction-plate"],
     excavator3: ["no-attachment", "hammer", "auger", "hard-roll-drill", "grapple", "hydraulic-compaction-plate"],
@@ -349,6 +381,7 @@
 
     // Get input values
     var excavator = document.getElementById("excavator").value;
+	  var tipper = document.getElementById("tipper").value;
     var difficulty = document.getElementById("difficulty").value;
     var duration = document.getElementById("duration").value;
     var attachments = Array.from(document.getElementById("attachments").selectedOptions).map(function (option) {
@@ -360,12 +393,23 @@
 
     // Excavator rates based on size
     var excavatorRates = {
+	    "none": 0,
       excavator1: 90,
       excavator2: 100,
       excavator3: 140,
       excavator4: 160,
       excavator5: 110,
     };
+	  
+	// Tippers rates based on size
+var tipperRates = {
+	"none": 0,
+  "t1": 85,
+  "t2": 100,
+  "t3": 130,
+  "t4": 145,
+  "t5": 100,
+};  
 
     // Difficulty level multipliers
     var difficultyMultipliers = {
@@ -375,7 +419,7 @@
     };
 
     // Calculate base cost per hour
-    var baseCostPerHour = excavatorRates[excavator] * difficultyMultipliers[difficulty];
+    var baseCostPerHour = excavatorRates[excavator] * difficultyMultipliers[difficulty] + tipperRates[tipper];
 
     // Calculate attachment cost
     var attachmentCost = 0;
