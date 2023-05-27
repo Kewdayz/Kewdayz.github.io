@@ -123,10 +123,12 @@ css
 .service h3 {
   font-size: 24px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .service p {
   font-size: 16px;
+  text-align: center;
 }
 
 /* About section styles */
