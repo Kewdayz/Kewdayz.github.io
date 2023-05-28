@@ -1,7 +1,7 @@
-<script>
+ <script>
   // Attachment options based on selected excavator
   var attachmentOptions = {
-	 "none":["no-attachment"],
+      "none":["no-attachment"],
     excavator1: ["no-attachment", "hammer"],
     excavator2: ["no-attachment", "hammer", "auger", "tilt-bucket", "grapple", "hydraulic-compaction-plate"],
     excavator3: ["no-attachment", "hammer", "auger", "hard-roll-drill", "grapple", "hydraulic-compaction-plate"],
