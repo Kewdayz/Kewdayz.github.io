@@ -75,6 +75,7 @@ css
 
 /* Hero section styles */
 .hero {
+  background-color: #f1f1f1;
   position: relative;
   text-align: center;
   padding: 100px 0;
