@@ -1,4 +1,4 @@
- <script>
+<script>
   // Attachment options based on selected excavator
   var attachmentOptions = {
       "none":["no-attachment"],
