@@ -81,27 +81,6 @@ css
   }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
-  .photo-item {
-    width: 50%;
-    height: auto;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  .photo-item {
-    width: 33.33%;
-    height: auto;
-  }
-}
-
-@media (min-width: 1200px) {
-  .photo-item {
-    width: 25%;
-    height: auto;
-  }
-}
-
 /* Hero section styles */
 .hero {
   background-color: #f1f1f1;
